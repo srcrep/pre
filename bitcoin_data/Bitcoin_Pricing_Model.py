@@ -142,6 +142,16 @@ predicted_stock_price = sc.inverse_transform(predicted_stock_price)
 #--------------------- Visualizing the RNN model results--------------------#
 plt.plot(real_stock_price, color = '#ffd700', label = "Real Price January - March 2021")
 plt.plot(predicted_stock_price, color = '#4782B4', label = "Predicted Price January - March 2021")
+for x,y in zip(real_stock_price, predicted_stock_price):
+
+    label = "{:.2f}".format(y)
+
+    plt.annotate(label, # this is the text
+                 (x,y), # these are the coordinates to position the label
+                 textcoords="offset points", # how to position the text
+                 xytext=(0,10), # distance from text to points (x,y)
+                 ha='center') # horizontal alignment can be left, right or center
+
 plt.title("Bitcoin Price Prediction")
 plt.xlabel("Time")
 plt.ylabel("Bitcoin Price")
