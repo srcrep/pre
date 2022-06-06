@@ -140,13 +140,13 @@ predicted_stock_price = regressor.predict(X_test)
 predicted_stock_price = sc.inverse_transform(predicted_stock_price)
 
 #--------------------- Visualizing the RNN model results--------------------#
-plt.plot(real_stock_price, color = '#ffd700', label = "Real Price January - March 2021")
-plt.plot(predicted_stock_price, color = '#4782B4', label = "Predicted Price January - March 2021")
+# plt.plot(real_stock_price, color = '#ffd700', label = "Real Price January - March 2021")
+plt.plot(predicted_stock_price, color = '#4782B4', label = "Predicted Price 6/7/2022 - 8/4/2022")
 plt.title("Bitcoin Price Prediction")
 plt.xlabel("Time")
 plt.ylabel("Bitcoin Price")
 plt.legend()
-plt.show()
+plt.savefig(test.png)
 
 
 
