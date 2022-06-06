@@ -146,7 +146,7 @@ plt.title("Bitcoin Price Prediction")
 plt.xlabel("Time")
 plt.ylabel("Bitcoin Price")
 plt.legend()
-plt.savefig("prediction.png")
+plt.savefig(my_path + "/results/prediction.png")
 plt.show()
 
 
