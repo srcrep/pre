@@ -145,8 +145,10 @@ plt.plot(predicted_stock_price, color = '#4782B4', label = "Predicted Price Janu
 plt.title("Bitcoin Price Prediction")
 plt.xlabel("Time")
 plt.ylabel("Bitcoin Price")
+plt.grid(b=True, which='major', color='k', linestyle='-')
+plt.grid(b=True, which='minor', color='r', linestyle='-', alpha=0.2)
+plt.minorticks_on()
 plt.legend()
-plt.grid()
 plt.savefig("prediction.png")
 plt.show()
 
