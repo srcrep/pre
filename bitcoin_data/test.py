@@ -118,8 +118,8 @@ print(real_stock_price)
 # for the consistence of the model we need to have the same scaling on the test as on the training
 # for the first test day we need the previous 60 days data from train
 print("First Financial day in 2021, when testing period begins",len(dataset_total)- len(dataset_test))
-print("First Financial day in 2021 minus 60 days",len(dataset_total)- len(dataset_test) - 90)
-inputs = dataset_total[len(dataset_total) - len(dataset_test) - 90:].values
+print("First Financial day in 2021 minus 60 days",len(dataset_total)- len(dataset_test) - 30)
+inputs = dataset_total[len(dataset_total) - len(dataset_test) - 30:].values
 
 # reshaping,normalizing the inputs
 inputs = inputs.reshape(-1,1)
@@ -129,8 +129,8 @@ inputs = sc.transform(inputs)
 
 #storing test data as we did in teh training
 X_test = []
-for i in range(90,inputs.size):
-    X_test.append(inputs[i-90:i, 0])
+for i in range(30,inputs.size):
+    X_test.append(inputs[i-30:i, 0])
 X_test = np.array(X_test)
 #adding extra dimension
 X_test = np.reshape(X_test, [X_test.shape[0], X_test.shape[1], 1])
@@ -140,15 +140,14 @@ predicted_stock_price = regressor.predict(X_test)
 predicted_stock_price = sc.inverse_transform(predicted_stock_price)
 
 #--------------------- Visualizing the RNN model results--------------------#
-plt.plot(real_stock_price, color = '#ffd700', label = "Real Price January - March 2021")
-plt.plot(predicted_stock_price, color = '#4782B4', label = "Predicted Price January - March 2021")
-plt.title("Bitcoin Price Prediction")
-plt.xlabel("Time")
-plt.ylabel("Bitcoin Price")
+plt.plot(real_stock_price, color = 'c', label = "rss")
+plt.plot(predicted_stock_price, color = 'm', label = "pss")
+plt.title("direction")
+plt.xlabel("days")
+plt.ylabel("price")
 plt.grid(b=True, which='major', color='k', linestyle='-')
-plt.grid(b=True, which='minor', color='r', linestyle='-', alpha=0.2)
+plt.grid(b=True, which='minor', color='k', linestyle='-', alpha=0.2)
 plt.minorticks_on()
 plt.legend()
 plt.savefig("prediction.png")
 plt.show()
-
