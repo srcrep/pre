@@ -26,10 +26,10 @@ training_set_scaled = sc.fit_transform(training_set)
 X_train = []
 y_train = []
 
-for i in range(90,training_set_scaled.size):
+for i in range(30,training_set_scaled.size):
     # appending the 60 previous stock prices to the list for i
     # we need to specify the rows and simply pick the first and only column
-    X_train.append(training_set_scaled[i-90:i, 0])
+    X_train.append(training_set_scaled[i-30:i, 0])
     # appending the 60th stock price to the list for i
     y_train.append(training_set_scaled[i, 0])
 # transforming pandas lists to numpy arrays required for the RNN
