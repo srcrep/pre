@@ -104,7 +104,7 @@ regressor.compile(optimizer = 'adam', loss = 'mean_squared_error')
 
 #--------------------- Training RNN model --------------------#
 #connecting the built regressor to the training model
-regressor.fit(X_train, y_train, epochs = 120, batch_size = 32)
+regressor.fit(X_train, y_train, epochs = 1, batch_size = 32)
 #
 #--------------------- Testing RNN model --------------------#
 dataset_test = pd.read_csv("Bitcoin_Stock_Price_Testset.csv")
