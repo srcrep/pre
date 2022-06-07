@@ -26,10 +26,10 @@ training_set_scaled = sc.fit_transform(training_set)
 X_train = []
 y_train = []
 
-for i in range(30,training_set_scaled.size):
+for i in range(90,training_set_scaled.size):
     # appending the 60 previous stock prices to the list for i
     # we need to specify the rows and simply pick the first and only column
-    X_train.append(training_set_scaled[i-30:i, 0])
+    X_train.append(training_set_scaled[i-90:i, 0])
     # appending the 60th stock price to the list for i
     y_train.append(training_set_scaled[i, 0])
 # transforming pandas lists to numpy arrays required for the RNN
@@ -118,8 +118,8 @@ print(real_stock_price)
 # for the consistence of the model we need to have the same scaling on the test as on the training
 # for the first test day we need the previous 60 days data from train
 print("First Financial day in 2021, when testing period begins",len(dataset_total)- len(dataset_test))
-print("First Financial day in 2021 minus 60 days",len(dataset_total)- len(dataset_test) - 30)
-inputs = dataset_total[len(dataset_total) - len(dataset_test) - 30:].values
+print("First Financial day in 2021 minus 60 days",len(dataset_total)- len(dataset_test) - 90)
+inputs = dataset_total[len(dataset_total) - len(dataset_test) - 90:].values
 
 # reshaping,normalizing the inputs
 inputs = inputs.reshape(-1,1)
@@ -129,8 +129,8 @@ inputs = sc.transform(inputs)
 
 #storing test data as we did in teh training
 X_test = []
-for i in range(30,inputs.size):
-    X_test.append(inputs[i-30:i, 0])
+for i in range(90,inputs.size):
+    X_test.append(inputs[i-90:i, 0])
 X_test = np.array(X_test)
 #adding extra dimension
 X_test = np.reshape(X_test, [X_test.shape[0], X_test.shape[1], 1])
