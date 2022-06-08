@@ -104,7 +104,7 @@ regressor.compile(optimizer = 'adam', loss = 'mean_squared_error')
 
 #--------------------- Training RNN model --------------------#
 #connecting the built regressor to the training model
-regressor.fit(X_train, y_train, epochs = 1, batch_size = 32)
+regressor.fit(X_train, y_train, epochs = 0, batch_size = 32)
 #
 #--------------------- Testing RNN model --------------------#
 dataset_test = pd.read_csv("Bitcoin_Stock_Price_Testset.csv")
@@ -139,9 +139,13 @@ X_test = np.reshape(X_test, [X_test.shape[0], X_test.shape[1], 1])
 predicted_stock_price = regressor.predict(X_test)
 predicted_stock_price = sc.inverse_transform(predicted_stock_price)
 
+# Pandas dataframe
+df = pd.DataFrame(dict(time=list(pd.date_range("2022-06-08 2022", periods=24)), price=np.reshape(X_test, [X_test.shape[0], X_test.shape[1], 1]))
+
+# Set the dataframe index
+df.set_index('time').plot()
+
 #--------------------- Visualizing the RNN model results--------------------#
-
-
 plt.plot(real_stock_price, color = 'c', label = "rss")
 plt.plot(predicted_stock_price, color = 'm', label = "pss")
 plt.title("direction")
