@@ -139,9 +139,12 @@ X_test = np.reshape(X_test, [X_test.shape[0], X_test.shape[1], 1])
 predicted_stock_price = regressor.predict(X_test)
 predicted_stock_price = sc.inverse_transform(predicted_stock_price)
 
+a = predicted_stock_price
+b = predicted_stock_price
+
 #--------------------- Visualizing the RNN model results--------------------#
 plt.figure(dpi=1200)
-plt.scatter(train_x, train_y)
+plt.scatter(a, b)
 plt.plot(real_stock_price, color = 'c', label = "rss")
 plt.plot(predicted_stock_price, color = 'm', label = "pss")
 plt.title("")
