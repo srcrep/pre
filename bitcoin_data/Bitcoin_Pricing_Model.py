@@ -140,6 +140,7 @@ predicted_stock_price = regressor.predict(X_test)
 predicted_stock_price = sc.inverse_transform(predicted_stock_price)
 
 #--------------------- Visualizing the RNN model results--------------------#
+plt.figure(dpi=1200)
 plt.plot(real_stock_price, color = 'c', label = "rss")
 plt.plot(predicted_stock_price, color = 'm', label = "pss")
 plt.title("direction")
