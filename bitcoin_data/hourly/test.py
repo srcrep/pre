@@ -139,10 +139,6 @@ X_test = np.reshape(X_test, [X_test.shape[0], X_test.shape[1], 1])
 predicted_stock_price = regressor.predict(X_test)
 predicted_stock_price = sc.inverse_transform(predicted_stock_price)
 
-# Pandas dataframe
-df = pd.read_csv('Bitcoin_Stock_Price_Testset.csv')
-df = pd.DataFrame(dict(time=list(pd.date_range("2022-06-08 2022", periods=24)), price=np.reshape(X_test, [X_test.shape[0], X_test.shape[1], 1])))
-df.set_index('time').plot()
 
 #--------------------- Visualizing the RNN model results--------------------#
 plt.plot(real_stock_price, color = 'c', label = "rss")
