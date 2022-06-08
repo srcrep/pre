@@ -117,8 +117,8 @@ print(real_stock_price)
 
 # for the consistence of the model we need to have the same scaling on the test as on the training
 # for the first test day we need the previous 60 days data from train
-print("First Financial day in 2021, when testing period begins",len(dataset_total)- len(dataset_test))
-print("First Financial day in 2021 minus 60 days",len(dataset_total)- len(dataset_test) - 90)
+print("",len(dataset_total)- len(dataset_test))
+print("",len(dataset_total)- len(dataset_test) - 90)
 inputs = dataset_total[len(dataset_total) - len(dataset_test) - 90:].values
 
 # reshaping,normalizing the inputs
